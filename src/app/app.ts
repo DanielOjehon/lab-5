@@ -1,6 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DataService } from './Services/data-service';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
@@ -10,14 +11,22 @@ import { DataService } from './Services/data-service';
 export class App implements OnInit{
   students:any[]=[];
   weather:any[]=[];
+
+  // Injecting the DataService to access API methods
   constructor(private dataService:DataService){}
+
+  // Runs when the component is first initialized
   ngOnInit(): void {
+
+    // Call service to get student data
     this.dataService.GetStudentData().subscribe(
       (data)=>{
         this.students = data.students;
         console.log(this.students);
       }
     );
+
+    // Call service to get weather data
     this.dataService.GetWeatherData().subscribe(
     (data)=>{
       this.weather = data.weather;
@@ -26,4 +35,3 @@ export class App implements OnInit{
   ); 
     }
   }
-
