@@ -1,10 +1,12 @@
 <h1>Student app</h1>
 
-<!---->
+<!-- Loop through the students array and display each student's name and id -->
 @for(student of students;track student.id){
 <li>{{student.name}}</li>
 <li>{{student.id}}</li>
 }
 
 <h2>Weather in Galway</h2>
+
+<!-- Display the main weather condition and description -->
 {{weather[0].main}},{{weather[0].description}}
